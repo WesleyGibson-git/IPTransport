@@ -1,6 +1,5 @@
 #include "security.h"
-
-const char * strsandwich ="@@8462fd8cc8f6702b8d65622c3e5b0c6b992d107bb787509e6d1e8e0852fa4859ade0340977b13c85b7aa9cfb927cb10bf";
+extern char  strsandwich[128];
 /*
  *  Encryption by RSA public key 
  *  return -1: Public key path error
@@ -18,14 +17,14 @@ int RSA_encrypt_1024(char *from, char *to)
         //printf("public key path error\n");
         return -1;
     }
-
+ 
     if ((publicRsa = PEM_read_RSA_PUBKEY(fp, NULL, NULL, NULL)) == NULL)
     {
         //printf("PEM_read_RSA_PUBKEY error \n");
         return -2;
     }
     fclose(fp);
-    strcat(from, strsandwich);
+    strncat(from, strsandwich,102);
 
     int rsa_len = RSA_size(publicRsa);
     int len = rsa_len - 11;

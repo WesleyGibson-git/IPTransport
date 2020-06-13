@@ -6,6 +6,7 @@
 
 #define PUBLICKEY "publicKey1024.pem"
 #define PRIVATEKEY "privateKey1024.pem"
+
 /*
  *  Encryption by RSA public key 
  *  return -1: Public key path error
